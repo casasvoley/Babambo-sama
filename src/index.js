@@ -1,6 +1,7 @@
 const {Client, Intents, Collection, MessageEmbed} = require('discord.js');
 const fs = require('fs');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 // Discord intents
 const myIntents = new Intents([Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]);
