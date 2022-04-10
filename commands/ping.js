@@ -1,3 +1,5 @@
+// Comando de prube del bot
+
 module.exports = {
     name: 'ping',
     description: "This is a ping command",

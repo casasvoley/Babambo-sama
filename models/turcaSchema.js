@@ -5,6 +5,6 @@ const turcaSchema = new mongoose.Schema({
     turcaLastMessage: {type: Date, default: ""}
 });
 
-const model = mongoose.model('TurcaModel', turcaSchema);
+const model = mongoose.model('TurcaCounter', turcaSchema);
 
 module.exports = model;
