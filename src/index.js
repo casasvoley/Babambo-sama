@@ -1,4 +1,4 @@
-const {Client, Intents, Collection, MessageEmbed} = require('discord.js');
+const {Client, Discord, Intents, Collection, MessageEmbed} = require('discord.js');
 const fs = require('fs');
 const MongoClient = require('mongodb').MongoClient;
 const env = JSON.parse(fs.readFileSync('src/env.json'));
@@ -7,23 +7,27 @@ const env = JSON.parse(fs.readFileSync('src/env.json'));
 const myIntents = new Intents([Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]);
 const client = new Client({intents: myIntents});
 
-// Prefix of the bot commands
-const prefix = '%';
 
-// List of commands
+// List of commands and events
 client.commands = new Collection();
+client.events = new Collection();
+
+// Require the handlers
+['command_handler', 'event_handler'].forEach(handler =>{
+    require(`../handlers/${handler}`)(client, Discord);
+});
 
 // Get all the command files
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+/* const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 for(const file of commandFiles){
     const command = require(`../commands/${file}`);
 
     client.commands.set(command.name, command);
-}
+} */
 
-client.once('ready', () => {
+/* client.once('ready', () => {
     console.log('Bot is online!');
-});
+}); */
 
 // For each message
 client.on('messageCreate', message =>{

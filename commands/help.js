@@ -3,7 +3,7 @@
 module.exports = {
     name: 'help',
     description: "Lista de comandos.",
-    execute(message, args, MessageEmbed){
+    execute(client, message, args, Discord){
         const newEmbed = {
         color: '#3042B1',
         title: "Lista de comandos",
