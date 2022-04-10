@@ -1,34 +1,38 @@
-
-
+const turcaModel = require('../models/turcaSchema');
+const fs = require('fs');
+const env = JSON.parse(fs.readFileSync('src/env.json'));
 
 module.exports = {
     name: 'turca',
     description: "Maneja el contador de días sin mensajes de la turca.",
-    execute(message, args){
-        const MongoClient = require('mongodb').MongoClient;
-        const fs = require('fs');
-        const env = JSON.parse(fs.readFileSync('src/env.json'));
+    async execute(client, message, args, Discord){
+        let turcaData;
+        try{
+            turcaData = await turcaModel.findOne({serverID: message.guild.id});
+            if (!turcaData){
+                turcaData = await turcaModel.create({
+                    serverID: message.guild.id,
+                    turcaLastMessage: ""
+                });
+                turcaData.save();    
+            }
+        } catch (err){
+            console.log(err);
+        }
 
         if (args.at(0) === 'reset') {
-            var date = new Date();
-            MongoClient.connect(env.MONGODB_SRV, function(err, client){
-                console.log('Connected to the database!')
-                var cursor=client.db('BabamboDB').collection('turcaCounter').find({serverID: message.guild.id});
-                if (!cursor.hasNext()){
-                    client.db('BabamboDB').collection('turcaCounter').insertOne({
-                        serverID: message.guild.id,
+            const date = new Date();
+
+            const response = await turcaModel.findOneAndUpdate(
+                {
+                    serverID: message.guild.id
+                },
+                {
+                    $set: {
                         turcaLastMessage: date
-                    });
-                } else {
-                    client.db('BabamboDB').collection('turcaCounter').updateOne({
-                        "serverID": message.guild.id
-                        }, {
-                        $set: {
-                        "turcaLastMessage": date
-                        }
-                        });
+                    }
                 }
-            });
+            );
 
             const newEmbed = {
             color: '#3042B1',
@@ -46,18 +50,12 @@ module.exports = {
         } else if (args.at(0) === 'days'){
             const _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-            MongoClient.connect(env.MONGODB_SRV, function(err, client){
-                console.log('Connected to the database!');
-                var cursor = client.db('BabamboDB').collection('Employee').find();
-
-                if (cursor.hasNext()){
-                    diferencia = Math.floor((new Date() - Date.parse(cursor.Next().turcaLastMessage)) / _MS_PER_DAY);
-                    message.channel.send("Llevamos " + diferencia + " días sin mensajes de la turca.");
-                } else {
-                    message.channel.send("No se ha establecido la fecha del último mensaje de la turca.");
-                }
-            });
-            
+            if (turcaData.turcaLastMessage != ""){
+                diferencia = Math.floor((new Date() - Date.parse(turcaData.turcaLastMessage)) / _MS_PER_DAY);
+                message.channel.send("Llevamos " + diferencia + " días sin mensajes de la turca.");
+            } else {
+                message.channel.send("No se ha establecido la fecha del último mensaje de la turca.");
+            }
         }
     }
 }
