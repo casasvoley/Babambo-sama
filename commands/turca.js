@@ -4,9 +4,12 @@ module.exports = {
     execute(message, args){
         const fs = require('fs');
         if (args.at(0) === 'reset') {
-            const variables = JSON.parse(fs.readFileSync(message.guild.id.toString() + ".json"));
+            if (!fs.existsSync("server_variables/" + message.guild.id.toString() + ".json")) {
+                fs.copyFileSync("variablesDefault.json", "server_variables/" + message.guild.id.toString() + ".json");
+            }
+            const variables = JSON.parse(fs.readFileSync("server_variables/" + message.guild.id.toString() + ".json"));
             variables.turcaLastMessage = new Date();
-            fs.writeFileSync(message.guild.id.toString() + ".json", JSON.stringify(variables));
+            fs.writeFileSync("server_variables/" + message.guild.id.toString() + ".json", JSON.stringify(variables));
 
             const newEmbed = {
             color: '#3042B1',
@@ -23,7 +26,7 @@ module.exports = {
             message.channel.send({embeds: [newEmbed]});
         } else if (args.at(0) === 'days'){
             const _MS_PER_DAY = 1000 * 60 * 60 * 24;
-            const variables = JSON.parse(fs.readFileSync('variables.json'));
+            const variables = JSON.parse(fs.readFileSync("server_variables/" + message.guild.id.toString() + ".json"));
             if (variables.turcaLastMessage !== ""){
                 diferencia = Math.floor((new Date() - Date.parse(variables.turcaLastMessage)) / _MS_PER_DAY);
                 message.channel.send("Llevamos " + diferencia + " días sin mensajes de la turca.");
