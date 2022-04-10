@@ -1,13 +1,13 @@
 module.exports = {
     name: 'turca',
     description: "Maneja el contador de días sin mensajes de la turca.",
-    execute(message, args){
+    async execute(message, args){
         const turcaModel = require('../models/turcaSchema');
         let turcaData;
         try{
-            turcaData = turcaModel.findOne({serverID: message.guild.id});
+            turcaData = await turcaModel.findOne({serverID: message.guild.id});
             if(!turcaData){
-                    turcaData = turcaModel.create({
+                    turcaData = await turcaModel.create({
                     serverID: message.guild.id,
                     turcaLastMessage: ""
                 });
