@@ -5,9 +5,9 @@ module.exports = {
         const turcaModel = require('../models/turcaSchema');
         let turcaData;
         try{
-            turcaData = await turcaModel.findOne({serverID: message.guild.id});
+            turcaData = turcaModel.findOne({serverID: message.guild.id});
             if(!turcaData){
-                    turcaData = await turcaModel.create({
+                    turcaData = turcaModel.create({
                     serverID: message.guild.id,
                     turcaLastMessage: ""
                 });
