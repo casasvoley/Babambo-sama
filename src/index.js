@@ -1,7 +1,7 @@
 const {Client, Intents, Collection, MessageEmbed} = require('discord.js');
 const fs = require('fs');
 const mongoose = require('mongoose');
-const env = JSON.parse(fs.readFileSync('src/env'));
+const env = JSON.parse(fs.readFileSync('env.json'));
 
 // Discord intents
 const myIntents = new Intents([Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]);
