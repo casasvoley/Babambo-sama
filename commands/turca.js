@@ -6,6 +6,7 @@ module.exports = {
     description: "Maneja el contador de días sin mensajes de la turca.",
     execute(message, args){
         const MongoClient = require('mongodb').MongoClient;
+        const fs = require('fs');
         const env = JSON.parse(fs.readFileSync('src/env.json'));
 
         if (args.at(0) === 'reset') {
