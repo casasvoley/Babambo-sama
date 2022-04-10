@@ -46,8 +46,8 @@ client.on('messageCreate', message =>{
 });
 
 mongoose.connect(env.MONGODB_SRV, {
-    useUnifiedTopology: true,
-    userFindAndModify: false
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 }).then(()=>{
     console.log('Connected to the database!')
 }).catch((err)=>{
@@ -57,4 +57,4 @@ mongoose.connect(env.MONGODB_SRV, {
 
 
 // ALWAYS last line of the code 
-client.login('OTYyNDQ3ODI0Mzk2NjIzOTEz.YlHrYg.OHQUJ1ky9NxvEisjEihvIJWgLQg');
+client.login(env.BOT_TOKEN);
