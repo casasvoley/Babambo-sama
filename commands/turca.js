@@ -8,7 +8,7 @@ module.exports = {
                 fs.copyFileSync("variablesDefault.json", "server_variables/" + message.guild.id.toString() + ".json");
             }
             const variables = JSON.parse(fs.readFileSync("server_variables/" + message.guild.id.toString() + ".json"));
-            variables.turcaLastMessage = new Date();
+            variables.turcaLastMessage = new Date("2022-04-09T17:37:17.923Z");
             fs.writeFileSync("server_variables/" + message.guild.id.toString() + ".json", JSON.stringify(variables));
 
             const newEmbed = {
