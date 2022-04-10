@@ -68,7 +68,11 @@ module.exports = {
             // Si el contador ha sido reseteado antes
             if (turcaData.turcaLastMessage.toString() != new Date(0).toString()){
                 diferencia = Math.floor((new Date() - Date.parse(turcaData.turcaLastMessage)) / _MS_PER_DAY);
-                message.channel.send("Llevamos " + diferencia + " días sin mensajes de la turca.");
+                if (diferencia == 1) {
+                    message.channel.send("Llevamos " + diferencia + " día sin mensajes de la turca.");
+                } else {
+                    message.channel.send("Llevamos " + diferencia + " días sin mensajes de la turca.");
+                }
             } 
             // Si no se ha reseteado
             else {
