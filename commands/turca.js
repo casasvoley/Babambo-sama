@@ -26,10 +26,8 @@ module.exports = {
                         $set: {
                         "turcaLastMessage": date
                         }
-                    });
+                        });
                 }
-
-                client.close();
             });
 
             const newEmbed = {
@@ -58,7 +56,6 @@ module.exports = {
                 } else {
                     message.channel.send("No se ha establecido la fecha del último mensaje de la turca.");
                 }
-                client.close();
             });
             
         }
