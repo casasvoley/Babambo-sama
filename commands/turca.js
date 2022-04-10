@@ -53,7 +53,7 @@ module.exports = {
         } else if (args.at(0) === 'days'){
             const _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-            if (turcaData.turcaLastMessage != new Date(0)){
+            if (turcaData.turcaLastMessage.toString() != new Date(0).toString()){
                 diferencia = Math.floor((new Date() - Date.parse(turcaData.turcaLastMessage)) / _MS_PER_DAY);
                 message.channel.send("Llevamos " + diferencia + " días sin mensajes de la turca.");
             } else {
