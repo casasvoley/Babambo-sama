@@ -15,7 +15,7 @@ module.exports = {
             if (!turcaData){
                 turcaData = await turcaModel.create({
                     serverID: message.guild.id,
-                    turcaLastMessage: ""
+                    turcaLastMessage: "NaN"
                 });
                 turcaData.save();    
             }
