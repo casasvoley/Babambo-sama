@@ -4,9 +4,9 @@ module.exports = {
     execute(message, args){
         const fs = require('fs');
         if (args.at(0) === 'reset') {
-            const variables = JSON.parse(fs.readFileSync('variables.json'));
+            const variables = JSON.parse(fs.readFileSync(message.guild.id.toString() + ".json"));
             variables.turcaLastMessage = new Date();
-            fs.writeFileSync('variables.json', JSON.stringify(variables));
+            fs.writeFileSync(message.guild.id.toString() + ".json", JSON.stringify(variables));
 
             const newEmbed = {
             color: '#3042B1',
