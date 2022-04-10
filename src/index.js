@@ -1,6 +1,6 @@
 const {Client, Intents, Collection, MessageEmbed} = require('discord.js');
 const fs = require('fs');
-const mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient;
 const env = JSON.parse(fs.readFileSync('src/env.json'));
 
 // Discord intents
@@ -45,14 +45,18 @@ client.on('messageCreate', message =>{
     }
 });
 
-mongoose.connect(env.MONGODB_SRV, {
+MongoClient.connect(env.MONGODB_SRV, function(err, db){
+    console.log('Connected to the database!')
+});
+
+/*mongoose.connect(env.MONGODB_SRV, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(()=>{
     console.log('Connected to the database!')
 }).catch((err)=>{
     console.log(err)
-});
+});*/
 
 
 
