@@ -1,3 +1,6 @@
+// Comando que controla el contador de días sin mensaje de la turca
+
+//
 const turcaModel = require('../models/turcaSchema');
 const fs = require('fs');
 const env = JSON.parse(fs.readFileSync('src/env.json'));
@@ -50,7 +53,7 @@ module.exports = {
         } else if (args.at(0) === 'days'){
             const _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-            if (turcaData.turcaLastMessage != ""){
+            if (turcaData.turcaLastMessage != "NaN"){
                 diferencia = Math.floor((new Date() - Date.parse(turcaData.turcaLastMessage)) / _MS_PER_DAY);
                 message.channel.send("Llevamos " + diferencia + " días sin mensajes de la turca.");
             } else {
