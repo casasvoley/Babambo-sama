@@ -15,7 +15,7 @@ module.exports = {
             if (!turcaData){
                 turcaData = await turcaModel.create({
                     serverID: message.guild.id,
-                    turcaLastMessage: "NaN"
+                    turcaLastMessage: new Date(0)
                 });
                 turcaData.save();    
             }
@@ -53,7 +53,7 @@ module.exports = {
         } else if (args.at(0) === 'days'){
             const _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-            if (turcaData.turcaLastMessage != "NaN"){
+            if (turcaData.turcaLastMessage != new Date(0)){
                 diferencia = Math.floor((new Date() - Date.parse(turcaData.turcaLastMessage)) / _MS_PER_DAY);
                 message.channel.send("Llevamos " + diferencia + " días sin mensajes de la turca.");
             } else {
