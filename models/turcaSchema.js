@@ -1,3 +1,5 @@
+// Schema para la tabla turcacounter
+
 const mongoose = require('mongoose');
 
 const turcaSchema = new mongoose.Schema({

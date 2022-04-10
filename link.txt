@@ -3,3 +3,5 @@ LINK DE INVITACIÓN: https://discord.com/api/oauth2/authorize?client_id=96244782
 DISCORD DEVELOPERS: https://discord.com/developers/applications/962447824396623913/information
 
 HEROKU: https://dashboard.heroku.com/apps/babambo-sama
+
+MONGO DB: https://cloud.mongodb.com/v2/6252b7a971a5121ccb937749#clusters

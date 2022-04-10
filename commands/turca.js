@@ -1,17 +1,22 @@
 // Comando que controla el contador de días sin mensaje de la turca
 
-//
+// Schema de la tabla turcacounter
 const turcaModel = require('../models/turcaSchema');
+// fs
 const fs = require('fs');
+// Fichero de variables de entorno
 const env = JSON.parse(fs.readFileSync('src/env.json'));
 
 module.exports = {
     name: 'turca',
     description: "Maneja el contador de días sin mensajes de la turca.",
     async execute(client, message, args, Discord){
+        // Tuple del servidor en la tabla turcacounter
         let turcaData;
         try{
+            // Coge la tuple correspondiente al servidor
             turcaData = await turcaModel.findOne({serverID: message.guild.id});
+            // si no existe la tuple, la creamos
             if (!turcaData){
                 turcaData = await turcaModel.create({
                     serverID: message.guild.id,
@@ -23,9 +28,11 @@ module.exports = {
             console.log(err);
         }
 
-        if (args.at(0) === 'reset') {
+        // Comando '%turca reset'
+        if (args.at(0).toLowerCase() === 'reset') {
             const date = new Date();
 
+            // Actualiza el valor de turcaLastMessage en la tuple
             const response = await turcaModel.findOneAndUpdate(
                 {
                     serverID: message.guild.id
@@ -37,6 +44,7 @@ module.exports = {
                 }
             );
 
+            // Creamos el embed message
             const newEmbed = {
             color: '#3042B1',
             title: "Reinicio",
@@ -49,14 +57,21 @@ module.exports = {
             image: {url: "https://areajugones.sport.es/wp-content/uploads/2021/08/imagen-2021-08-07-180443-1080x609.jpg.webp"}
             } 
 
+            // Enviamos el embed message
             message.channel.send({embeds: [newEmbed]});
-        } else if (args.at(0) === 'days'){
+
+        } 
+        // Comando %turca days
+        else if (args.at(0).toLowerCase() === 'days'){
             const _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
+            // Si el contador ha sido reseteado antes
             if (turcaData.turcaLastMessage.toString() != new Date(0).toString()){
                 diferencia = Math.floor((new Date() - Date.parse(turcaData.turcaLastMessage)) / _MS_PER_DAY);
                 message.channel.send("Llevamos " + diferencia + " días sin mensajes de la turca.");
-            } else {
+            } 
+            // Si no se ha reseteado
+            else {
                 message.channel.send("No se ha establecido la fecha del último mensaje de la turca.");
             }
         }
