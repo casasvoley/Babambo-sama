@@ -1,0 +1,3 @@
+https://discord.com/api/oauth2/authorize?client_id=962447824396623913&permissions=8&scope=bot
+
+USAR HEROKU COMO SERVIDOR CLOUD PARA EL BOT
