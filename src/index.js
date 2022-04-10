@@ -46,8 +46,7 @@ client.on('messageCreate', message =>{
 });
 
 MongoClient.connect(env.MONGODB_SRV, function(err, client){
-    console.log('Connected to the database!')
-    client.close();
+    console.log('Connected to the database!');
 });
 
 /*mongoose.connect(env.MONGODB_SRV, {
