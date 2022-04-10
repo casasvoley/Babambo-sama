@@ -38,7 +38,7 @@ module.exports = {
             description: "Reinicia el contador del número de días sin recibir mensajes de la turca.",
             fields: [
                 {name: '¡Nuevo mensaje de la turca!', value: 'Más te vale contestarla, Alejandro.'},
-                {name: 'Fecha', value: date}
+                {name: 'Fecha', value: date.toString()}
             ],
             footer: {text: '/ᐠᵕ̩̩̥ ‸ᵕ̩̩̥ ᐟ\\ﾉɴʏᴀ~'},
             image: {url: "https://areajugones.sport.es/wp-content/uploads/2021/08/imagen-2021-08-07-180443-1080x609.jpg.webp"}
