@@ -33,7 +33,7 @@ module.exports = {
         const songs = guildQueue.songs.map((song, i) => `**${i}** - ${song.name}`);
         songs.shift();
         const numSongs = guildQueue.songs.length-1;
-        const nextSongs = numSongs > numMostrar ? `Y otra(s) **${numSongs - numMostrar}** canción(es)...` : `En la cola hay **${numSongs}** canción(es) más...`;
+        const nextSongs = numSongs > numMostrar ? `Y otra(s) **${numSongs - numMostrar}** canción(es) más...` : `En la cola hay **${numSongs}** canción(es)...`;
 
         embed.setDescription(`Está sonando ${guildQueue.nowPlaying.name}\n\n${songs.slice(0, numMostrar).join('\n')}\n\n${nextSongs}`);
 
