@@ -22,10 +22,10 @@ module.exports = {
        
         if(!guildQueue) {
             guildQueue = client.player.createQueue(message.guild.id);
-            await queue.join(message.member.voice.channel);
+            await guildQueue.join(message.member.voice.channel);
         }
 
-        let song = await queue.play(args.join(' '));
+        let song = await guildQueue.play(args.join(' '));
 
         /* // Comprobamos si el usuario está en un chat de voz
         const voice_channel = message.member.voice.channel;
