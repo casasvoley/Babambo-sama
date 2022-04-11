@@ -75,7 +75,7 @@ module.exports = {
                     message.channel.send("Llevamos " + diferencia + " horas sin mensajes de la turca.");
                 } else{
                     const dias = Math.floor(diferencia/24);
-                    const horas = Math.floor((diferencia%24)*24);
+                    const horas = Math.floor(diferencia - (dias*24));
                     let str = "";
                     if (dias == 1){
                         str = str + `Llevamos ${dias} día`;
