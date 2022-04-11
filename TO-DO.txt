@@ -1,5 +1,7 @@
 añadir comandos de música
 
+hacer que añada playlist a la cola
+
 añadir iu de música
 
 actualizar help
