@@ -3,7 +3,7 @@ const ytdl = require('ytdl-core');
 // Librería de búsqueda en Youtube
 const ytSearch = require('yt-search');
 // Librería de voz de Discord
-const joinVoiceChannel = require('@discordjs/voice');
+const {joinVoiceChannel} = require('@discordjs/voice');
 
 // Cola global para todos los servidores
 // queue(message.guild.id, queue_constructor object { voice_channel, text_channel, connection, songs[] });
