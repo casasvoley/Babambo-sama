@@ -2,6 +2,7 @@
 const dmp = require('discord-music-player');
 const { MessageEmbed } = require('discord.js');
 
+const fs = require('fs'); // fs
 const env = JSON.parse(fs.readFileSync('src/env.json')); // Fichero de variables de enterno 
 
 module.exports = {

@@ -1,5 +1,6 @@
 // Comando que muestra la lista de comandos
 
+const fs = require('fs'); // fs
 const env = JSON.parse(fs.readFileSync('src/env.json')); // Fichero de variables de enterno 
 
 module.exports = {
