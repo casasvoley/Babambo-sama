@@ -18,7 +18,16 @@ module.exports = {
     description: 'Funcionalidad de mbot de música',
     async execute(message, args, cmd, client, Discord){
 
-        // Comprobamos si el usuario está en un chat de voz
+        let guildQueue = client.player.getQueue(message.guild.id);
+       
+        if(!guidQueue) {
+            guildQueue = client.player.createQueue(message.guild.id);
+            await queue.join(message.member.voice.channel);
+        }
+
+        let song = await queue.play(args.join(' '));
+
+        /* // Comprobamos si el usuario está en un chat de voz
         const voice_channel = message.member.voice.channel;
         if (!voice_channel) return message.channel.send('¡Métete en un chat de voz primero!');
 
@@ -90,7 +99,7 @@ module.exports = {
                 server_queue.songs.push(song);
                 return message.channel.send(`¡${song.title} añadida a la cola!`);
             }
-        }
+        } */
     }
 }
 
