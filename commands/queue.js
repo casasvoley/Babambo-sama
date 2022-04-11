@@ -21,10 +21,10 @@ module.exports = {
         embed.setThumbnail(message.guild.iconURL({ size: 2048, dynamic: true }));
         embed.setAuthor({name: `Cola de reproducción`, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true })});
 
-        const songs = guildQueue.songs.map((song, i) => `**${i + 1}** - ${song.name} | ${song.author}`);
+        const songs = guildQueue.songs.map((song, i) => `**${i}** - ${song.name}`);
         songs.shift();
-        const numSongs = guildQueue.songs.length;
-        const nextSongs = numSongs > 5 ? `Y otra(s) **${numSongs - 5}** canción(es)...` : `En la cola hay **${numSongs}** canción(es)...`;
+        const numSongs = guildQueue.songs.length-1;
+        const nextSongs = numSongs > 5 ? `Y otra(s) **${numSongs - 5}** canción(es)...` : `En la cola hay **${numSongs}** canción(es) más...`;
 
         embed.setDescription(`Está sonando ${guildQueue.nowPlaying.name}\n\n${songs.slice(0, 5).join('\n')}\n\n${nextSongs}`);
 
