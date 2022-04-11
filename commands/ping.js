@@ -2,8 +2,9 @@
 
 module.exports = {
     name: 'ping',
+    aliases: ['pingpong'],
     description: "This is a ping command",
-    execute(client, message, args, Discord){
+    execute(message, args, cmd, client, Discord){
         message.channel.send('pong!');
     }
 }
