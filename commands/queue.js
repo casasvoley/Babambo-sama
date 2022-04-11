@@ -14,7 +14,7 @@ module.exports = {
 
         if (!guildQueue.songs[0]) return message.channel.send(`No music in the queue after the current one ${message.author}... try again ? ❌`);
 
-        const embed = new MessageEmbed();
+        const embed = new Discord.MessageEmbed();
 
         embed.setColor('RED');
         embed.setThumbnail(message.guild.iconURL({ size: 2048, dynamic: true }));
