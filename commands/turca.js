@@ -76,7 +76,7 @@ module.exports = {
                 } else{
                     const dias = Math.floor(diferencia/24);
                     const horas = Math.floor((diferencia%24)*24);
-                    const str = "";
+                    let str = "";
                     if (dias == 1){
                         str = str + `Llevamos ${dias} día`;
                     } else {
