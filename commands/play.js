@@ -2,7 +2,6 @@
 const ytdl = require('ytdl-core');
 // Librería de búsqueda en Youtube
 const ytSearch = require('yt-search');
-const { MessageComponentTypes } = require('discord.js/typings/enums');
 
 // Cola global para todos los servidores
 // queue(message.guild.id, queue_constructor object { voice_channel, text_channel, connection, songs[] });
