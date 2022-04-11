@@ -5,15 +5,11 @@ const ytSearch = require('yt-search');
 // Librería Discord Music Player
 const dmp = require('discord-music-player');
 
-// Cola global para todos los servidores
-// queue(message.guild.id, queue_constructor object { voice_channel, text_channel, connection, songs[] });
-const queue = new Map();
-
 module.exports = {
     name: 'play',
     aliases: ['p'],
     cooldown: 0,
-    description: 'Funcionalidad de mbot de música',
+    description: 'Añade canciones a la cola del bot de música',
     async execute(message, args, cmd, client, Discord){
 
         // Buscamos la cola del servidor
