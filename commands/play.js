@@ -25,7 +25,28 @@ module.exports = {
             await guildQueue.join(message.member.voice.channel);
         }
 
-        let song = await guildQueue.play(args.join(' '));
+        let song;
+        // Si es una URL, lo ponemos como información de la canción
+        if (ytdl.validateURL(args[0])) {
+            const song_info = await ytdl.getInfo(args[0]);
+            song = new dmp.Song({ name: song_info.videoDetails.title, url: song_info.videoDetails.video_url}, guildQueue, message.author.id);
+        // Si no, buscamos en Youtube y lo ponemos como información de la canción
+        } else {
+            const video_finder = async (query) => {
+                const videoResult = await ytSearch(query);
+                return (videoResult.videos.length > 1) ? videoResult.videos[0] : null;
+            }
+
+            const video = await video_finder(args.join(' '));
+            if (video) {
+                song = new dmp.Song({ name: video.title, url: video.url}, guildQueue, message.author.id);
+            } else {
+                message.channel.send('No pude encontrar el vídeo ;_;');
+            }
+        }
+        if (song){
+            await guildQueue.play(args.join(' '));
+        }
 
         /* // Comprobamos si el usuario está en un chat de voz
         const voice_channel = message.member.voice.channel;
