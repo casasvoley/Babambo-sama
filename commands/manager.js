@@ -51,7 +51,7 @@ module.exports = {
             fields: [
                 {name: 'Fecha', value: date.toString()}
             ],
-            image: {url: "https://areajugones.sport.es/wp-content/uploads/2021/08/imagen-2021-08-07-180443-1080x609.jpg.webp"}
+            image: {url: "https://imagenes.elpais.com/resizer/1Hfn_8CK7o6cOzHpaT8kNUDHi2g=/1960x0/filters:focal(1745x609:1755x619)/cloudfront-eu-central-1.images.arcpublishing.com/prisa/7G364PMCSFGIHFZNHHJLNQL4SU.jpg"}
             } 
 
             // Enviamos el embed message
