@@ -71,7 +71,7 @@ module.exports = {
                 diferencia = Math.floor((new Date() - Date.parse(turcaData.turcaLastMessage)) / _MS_PER_DAY);
                 if (diferencia == 1) {
                     message.channel.send("Llevamos " + diferencia + " hora sin mensajes de la turca.");
-                } else if (diferencia < 60){
+                } else if (diferencia < 24){
                     message.channel.send("Llevamos " + diferencia + " horas sin mensajes de la turca.");
                 } else{
                     const dias = Math.floor(diferencia/24);
