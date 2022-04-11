@@ -63,16 +63,33 @@ module.exports = {
 
         } 
         // Comando %turca days
-        else if (args.at(0).toLowerCase() === 'days'){
-            const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+        else if (args.at(0).toLowerCase() === 'counter'){
+            const _MS_PER_DAY = 1000 * 60 * 60;
 
             // Si el contador ha sido reseteado antes
             if (turcaData.turcaLastMessage.toString() != new Date(0).toString()){
                 diferencia = Math.floor((new Date() - Date.parse(turcaData.turcaLastMessage)) / _MS_PER_DAY);
                 if (diferencia == 1) {
-                    message.channel.send("Llevamos " + diferencia + " día sin mensajes de la turca.");
-                } else {
-                    message.channel.send("Llevamos " + diferencia + " días sin mensajes de la turca.");
+                    message.channel.send("Llevamos " + diferencia + " hora sin mensajes de la turca.");
+                } else if (diferencia < 60){
+                    message.channel.send("Llevamos " + diferencia + " horas sin mensajes de la turca.");
+                } else{
+                    const dias = Math.floor(diferencia/60);
+                    const horas = Math.floor((diferencia%60)*60);
+                    const str = "";
+                    if (dias == 1){
+                        str = str + `Llevamos ${dias} día`;
+                    } else {
+                        str = str + `Llevamos ${dias} días`;
+                    }
+
+                    if (horas == 1){
+                        str = str + ` y ${horas} hora`;
+                    } else if (horas > 1){
+                        str = str + ` y ${horas} horas`;
+                    }
+
+                    message.channel.send(str + " sin mensajes de la turca.");
                 }
             } 
             // Si no se ha reseteado

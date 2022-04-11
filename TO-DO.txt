@@ -1,0 +1,9 @@
+cambiar turca a horas
+
+comando maanegr
+
+añadir comandos de música
+
+añadir iu de música
+
+actualizar help
