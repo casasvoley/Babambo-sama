@@ -20,7 +20,7 @@ module.exports = {
 
         let guildQueue = client.player.getQueue(message.guild.id);
        
-        if(!guidQueue) {
+        if(!guildQueue) {
             guildQueue = client.player.createQueue(message.guild.id);
             await queue.join(message.member.voice.channel);
         }
