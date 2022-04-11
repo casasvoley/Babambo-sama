@@ -2,6 +2,8 @@
 const ytdl = require('ytdl-core');
 // Librería de búsqueda en Youtube
 const ytSearch = require('yt-search');
+// Librería de voz de Discord
+const joinVoiceChannel = require('@discordjs/voice');
 
 // Cola global para todos los servidores
 // queue(message.guild.id, queue_constructor object { voice_channel, text_channel, connection, songs[] });
@@ -58,7 +60,11 @@ module.exports = {
                 queue_constructor.songs.push(song);
     
                 try{
-                    const connection = await voice_channel.join();
+                    const connection = await joinVoiceChannel({
+                        channelId: voice_channel.id,
+                        guildId: voice_channel.guild.id,
+                        adapterCreator: voice_channel.guild.voiceAdapterCreator
+                    });
                     queue_constructor.connection = connection;
                     video_player(message.guild, queue_constructor.songs[0]);
                 } catch (err){
