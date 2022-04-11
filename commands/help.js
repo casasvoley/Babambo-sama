@@ -10,8 +10,9 @@ module.exports = {
         title: "Lista de comandos",
         description: "Lista de comandos.",
         fields: [
-            {name: '%turca reset', value: 'Reinicia el contador de días sin mensaje de la turca.'},
-            {name: '%turca days', value: 'Muestra el contador de días sin mensaje de la turca.'}
+            {name: '%ping (%pingpong)', value: '¿Una partidita de ping-pong?'},
+            {name: '%turca reset (%t reset, %turcapeasda reset)', value: 'Reinicia el contador de días sin mensaje de la turca.'},
+            {name: '%turca days (%t days, %turcapeasda days)', value: 'Muestra el contador de días sin mensaje de la turca.'}
         ]}
         message.channel.send({embeds: [newEmbed]});
     }
