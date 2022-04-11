@@ -2,10 +2,14 @@ const {Client, Discord, Intents, Collection} = require('discord.js');
 const fs = require('fs'); // fs
 const mongoose = require('mongoose'); // API de MongoDB
 const env = JSON.parse(fs.readFileSync('src/env.json')); // Fichero de variables de enterno 
+const { Player } = require("discord-music-player"); // Discord Music Player
 
 // Discord intents
-const myIntents = new Intents([Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]);
+const myIntents = new Intents([Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES]);
+// Discord client
 const client = new Client({intents: myIntents});
+// Discord Music Player
+client.player = new Player(client);
 
 
 // List of commands and events
