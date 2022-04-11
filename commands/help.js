@@ -1,12 +1,14 @@
 // Comando que muestra la lista de comandos
 
+const env = JSON.parse(fs.readFileSync('src/env.json')); // Fichero de variables de enterno 
+
 module.exports = {
     name: 'help',
     aliases: ['h'],
     description: "Lista de comandos.",
     execute(message, args, cmd, client, Discord){
         const newEmbed = {
-        color: '#3042B1',
+        color: env.EMBED_COLOR,
         title: "Lista de comandos",
         description: "Lista de comandos.",
         fields: [

@@ -45,7 +45,7 @@ module.exports = {
 
             // Creamos el embed message
             const newEmbed = {
-            color: '#3042B1',
+            color: env.EMBED_COLOR,
             title: "Reinicio",
             description: "Reinicia el contador del número de horas sin jugar al Football Manager.",
             fields: [
