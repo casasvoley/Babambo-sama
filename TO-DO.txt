@@ -1,5 +1,3 @@
-cambiar turca a horas
-
 comando maanegr
 
 añadir comandos de música
