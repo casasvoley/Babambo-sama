@@ -1,5 +1,7 @@
 // Comando que controla el contador de horas sin mensaje de la turca
 
+// MessageEmbed
+const {MessageEmbed} = require('discord.js');
 // Schema de la tabla turcacounter
 const turcaModel = require('../models/turcaSchema');
 // fs
@@ -46,20 +48,21 @@ module.exports = {
             );
 
             // Creamos el embed message
-            const newEmbed = {
-            color: env.EMBED_COLOR,
-            title: "Reinicio",
-            description: "Reinicia el contador del número de días sin recibir mensajes de la turca.",
-            fields: [
+            const embed = new MessageEmbed();
+            embed.setColor(env.EMBED_COLOR);
+            embed.setThumbnail(message.guild.iconURL({ size: 2048, dynamic: true }));
+            embed.setTimestamp();
+
+            embed.setTitle( "Reinicio");
+            embed.addFields( [
                 {name: '¡Nuevo mensaje de la turca!', value: 'Más te vale contestarla, Alejandro.'},
-                {name: 'Fecha', value: date.toString()}
-            ],
-            footer: {text: '/ᐠᵕ̩̩̥ ‸ᵕ̩̩̥ ᐟ\\ﾉɴʏᴀ~'},
-            image: {url: "https://areajugones.sport.es/wp-content/uploads/2021/08/imagen-2021-08-07-180443-1080x609.jpg.webp"}
-            } 
+                {name: 'Fecha', value: date.toLocaleString('es-ES')}
+            ]);
+            embed.setImage( "https://areajugones.sport.es/wp-content/uploads/2021/08/imagen-2021-08-07-180443-1080x609.jpg.webp"); 
+            embed.setFooter({text: '/ᐠᵕ̩̩̥ ‸ᵕ̩̩̥ ᐟ\\ﾉɴʏᴀ~'});
 
             // Enviamos el embed message
-            message.channel.send({embeds: [newEmbed]});
+            message.channel.send({embeds: [embed]});
 
         } 
         // Comando %turca days
