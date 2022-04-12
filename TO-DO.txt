@@ -1,12 +1,6 @@
-hacer que el bot de música ignore a Alejandro de vez en cuando
-
-añadir soporte de playlist
-
 comando comedia
 
 añadir comandos de música
-
-hacer que añada playlist a la cola
 
 añadir iu de música
 
