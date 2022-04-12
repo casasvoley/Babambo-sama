@@ -54,7 +54,7 @@ module.exports = {
             embed.setTitle( "Reinicio");
             embed.setDescription( "Parece que Alejandro ha recaído...")
             embed.addFields( [
-                {name: 'Fecha', value: date.toLocaleDateString('es-ES')}
+                {name: 'Fecha', value: date.toLocaleString('es-ES')}
             ]);
             embed.setImage( "https://imagenes.elpais.com/resizer/1Hfn_8CK7o6cOzHpaT8kNUDHi2g=/1960x0/filters:focal(1745x609:1755x619)/cloudfront-eu-central-1.images.arcpublishing.com/prisa/7G364PMCSFGIHFZNHHJLNQL4SU.jpg"); 
 
