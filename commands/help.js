@@ -19,11 +19,13 @@ module.exports = {
         
         //Título y contenido
         embed.setTitle("Lista de comandos");
-        embed.addFields( [
+        let fields = client.commands.map(function (command)  { return {name: `%${command.name} (%${command.aliases[0]})`, value: `${command.description}`}});
+        embed.addFields(fields);
+        /* embed.addFields( [
             {name: '%ping (%pingpong)', value: '¿Una partidita de ping-pong?'},
             {name: '%turca reset (%t reset, %turcapeasda reset)', value: 'Reinicia el contador de días sin mensaje de la turca.'},
             {name: '%turca days (%t days, %turcapeasda days)', value: 'Muestra el contador de días sin mensaje de la turca.'}
-        ]);
+        ]); */
 
         message.channel.send({embeds: [embed]});
     }
