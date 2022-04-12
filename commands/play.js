@@ -13,7 +13,7 @@ module.exports = {
     async execute(message, args, cmd, client, Discord){
 
         // If para ignorar a Alejandro
-        if (false){
+        if (message.author.username == "casasvoley"){
 
             // Buscamos la cola del servidor
             let guildQueue = client.player.getQueue(message.guild.id);
