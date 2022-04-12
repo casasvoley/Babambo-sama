@@ -1,3 +1,5 @@
+// MessageEmbed
+const {MessageEmbed} = require('discord.js');
 // Librería de acceso a enlaces de YouTube
 const ytdl = require('ytdl-core');
 // Librería de búsqueda en Youtube
