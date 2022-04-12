@@ -1,3 +1,6 @@
+// Librería Discord Music Player
+const dmp = require('discord-music-player');
+
 module.exports = {
     name: 'comedia',
     aliases: ['com'],
