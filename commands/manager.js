@@ -59,7 +59,7 @@ module.exports = {
             embed.setImage( "https://imagenes.elpais.com/resizer/1Hfn_8CK7o6cOzHpaT8kNUDHi2g=/1960x0/filters:focal(1745x609:1755x619)/cloudfront-eu-central-1.images.arcpublishing.com/prisa/7G364PMCSFGIHFZNHHJLNQL4SU.jpg"); 
 
             // Enviamos el embed message
-            message.channel.send({embeds: [newEmbed]});
+            message.channel.send({embeds: [embed]});
 
         } 
         // Comando %manager days
