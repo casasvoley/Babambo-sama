@@ -21,16 +21,8 @@ module.exports = {
         // Si la canción existe, la reproducimos
         if (song){
             await guildQueue.play(song);
-            sleep();
-            guildQueue.skip();
+            setTimeout(() => { guildQueue.skip(); }, 39000);
         }
     }
 }
 
-function sleep(milliseconds) {
-    const date = Date.now(39000);
-    let currentDate = null;
-    do {
-      currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
-}
