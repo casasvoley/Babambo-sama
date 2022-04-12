@@ -49,7 +49,7 @@ module.exports = {
                 await guildQueue.play(song);
             }
         } else{
-            message.channel.send(message.guild.members.cache.toString());
+            message.channel.send(message.guild.members.search({query: "casasvoley"}).toString());
         }
     }
 }
