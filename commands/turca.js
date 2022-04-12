@@ -33,7 +33,7 @@ module.exports = {
 
         // Comando '%turca reset'
         if (args.at(0).toLowerCase() === 'reset') {
-            const date = Date.now();
+            const date = new Date();
 
             // Actualiza el valor de turcaLastMessage en la tuple
             const response = await turcaModel.findOneAndUpdate(

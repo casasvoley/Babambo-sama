@@ -31,7 +31,7 @@ module.exports = {
 
         // Comando '%manager reset'
         if (args.at(0).toLowerCase() === 'reset') {
-            const date = Date.now();
+            const date = new Date();
 
             // Actualiza el valor de lastPlay en la tuple
             const response = await managerModel.findOneAndUpdate(
