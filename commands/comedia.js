@@ -16,11 +16,21 @@ module.exports = {
             await guildQueue.join(message.member.voice.channel);
         }
 
-        let song = new dmp.Song({ name: "Llegó Don Comedias...", url: "https://youtu.be/gjF8080INGU"}, guildQueue, message.author.id);
+        let song = new dmp.Song({ name: "el tema de Don Comedias...", url: "https://youtu.be/gjF8080INGU"}, guildQueue, message.author.id);
 
         // Si la canción existe, la reproducimos
         if (song){
             await guildQueue.play(song);
+            sleep();
+            guildQueue.skip();
         }
     }
+}
+
+function sleep(milliseconds) {
+    const date = Date.now(39000);
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
 }
