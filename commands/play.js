@@ -13,7 +13,24 @@ module.exports = {
     async execute(message, args, cmd, client, Discord){
 
         // If para ignorar a Alejandro
-        if (message.author.username == "casasvoley"){
+        if (message.author.username == "casasvoley" && Math.random() > 0.2){
+            // Creamos el embed message
+            const embed = new MessageEmbed();
+            embed.setColor(env.EMBED_COLOR);
+            embed.setThumbnail(message.guild.iconURL({ size: 2048, dynamic: true }));
+            embed.setTimestamp();
+
+            embed.setTitle( "Reinicio");
+            embed.addFields( [
+                {name: '¡Nuevo mensaje de la turca!', value: 'Más te vale contestarla, Alejandro.'},
+                {name: 'Fecha', value: date.toLocaleString('es-ES', {timeZone: 'Europe/Madrid'})}
+            ]);
+            embed.setImage( "https://areajugones.sport.es/wp-content/uploads/2021/08/imagen-2021-08-07-180443-1080x609.jpg.webp"); 
+            embed.setFooter({text: '/ᐠᵕ̩̩̥ ‸ᵕ̩̩̥ ᐟ\\ﾉɴʏᴀ~'});
+
+            // Enviamos el embed message
+            message.channel.send({embeds: [embed]});
+        } else {
             message.channel.send(message.author.id);
             // Buscamos la cola del servidor
             let guildQueue = client.player.getQueue(message.guild.id);
@@ -50,23 +67,6 @@ module.exports = {
             if (song){
                 await guildQueue.play(song);
             }
-        } else{
-            // Creamos el embed message
-            const embed = new MessageEmbed();
-            embed.setColor(env.EMBED_COLOR);
-            embed.setThumbnail(message.guild.iconURL({ size: 2048, dynamic: true }));
-            embed.setTimestamp();
-
-            embed.setTitle( "Reinicio");
-            embed.addFields( [
-                {name: '¡Nuevo mensaje de la turca!', value: 'Más te vale contestarla, Alejandro.'},
-                {name: 'Fecha', value: date.toLocaleString('es-ES', {timeZone: 'Europe/Madrid'})}
-            ]);
-            embed.setImage( "https://areajugones.sport.es/wp-content/uploads/2021/08/imagen-2021-08-07-180443-1080x609.jpg.webp"); 
-            embed.setFooter({text: '/ᐠᵕ̩̩̥ ‸ᵕ̩̩̥ ᐟ\\ﾉɴʏᴀ~'});
-
-            // Enviamos el embed message
-            message.channel.send({embeds: [embed]});
-        }
+        } 
     }
 }
