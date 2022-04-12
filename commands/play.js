@@ -7,6 +7,9 @@ const ytSearch = require('yt-search');
 // Librería Discord Music Player
 const dmp = require('discord-music-player');
 
+const fs = require('fs'); // fs
+const env = JSON.parse(fs.readFileSync('src/env.json')); // Fichero de variables de enterno 
+
 module.exports = {
     name: 'play',
     aliases: ['p'],
