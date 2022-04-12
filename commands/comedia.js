@@ -21,7 +21,7 @@ module.exports = {
         // Si la canción existe, la reproducimos
         if (song){
             await guildQueue.play(song);
-            setTimeout(() => { guildQueue.skip(); }, 39000);
+            setTimeout(() => { guildQueue.skip(); }, 42000);
         }
     }
 }
