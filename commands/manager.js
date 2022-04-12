@@ -1,3 +1,5 @@
+// Librería de Discord
+const {MessageEmbed} = require('discord.js');
 // Schema de la tabla managercounter
 const managerModel = require('../models/managerSchema');
 // fs
@@ -44,15 +46,17 @@ module.exports = {
             );
 
             // Creamos el embed message
-            const newEmbed = {
-            color: env.EMBED_COLOR,
-            title: "Reinicio",
-            description: "Reinicia el contador del número de horas sin jugar al Football Manager.",
-            fields: [
-                {name: 'Fecha', value: date.toString()}
-            ],
-            image: {url: "https://imagenes.elpais.com/resizer/1Hfn_8CK7o6cOzHpaT8kNUDHi2g=/1960x0/filters:focal(1745x609:1755x619)/cloudfront-eu-central-1.images.arcpublishing.com/prisa/7G364PMCSFGIHFZNHHJLNQL4SU.jpg"}
-            } 
+            const embed = new MessageEmbed();
+            embed.setColor(env.EMBED_COLOR);
+            embed.setThumbnail(message.guild.iconURL({ size: 2048, dynamic: true }));
+            embed.setTimestamp();
+
+            embed.setTitle( "Reinicio");
+            embed.setDescription( "Parece que Alejandro ha recaído...")
+            embed.addFields( [
+                {name: 'Fecha', value: date.toLocaleDateString('es-ES')}
+            ]);
+            embed.setImage( "https://imagenes.elpais.com/resizer/1Hfn_8CK7o6cOzHpaT8kNUDHi2g=/1960x0/filters:focal(1745x609:1755x619)/cloudfront-eu-central-1.images.arcpublishing.com/prisa/7G364PMCSFGIHFZNHHJLNQL4SU.jpg"); 
 
             // Enviamos el embed message
             message.channel.send({embeds: [newEmbed]});
