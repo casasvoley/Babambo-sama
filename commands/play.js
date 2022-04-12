@@ -1,4 +1,4 @@
-// MessageEmbed
+// MessageEmbed y MessageAttachment
 const {MessageEmbed, MessageAttachment} = require('discord.js');
 // Librería de acceso a enlaces de YouTube
 const ytdl = require('ytdl-core');
@@ -22,19 +22,23 @@ module.exports = {
             // Creamos el embed message
             const file = new MessageAttachment('resources/anime-tsundere.gif');
             const exampleEmbed = new MessageEmbed()
-	            .setTitle('Some title')
+	            .setColor(env.EMBED_COLOR)
 	            .setImage('attachment://anime-tsundere.gif');
 
             message.channel.send({ embeds: [exampleEmbed], files: [file] });
         } else {
-            message.channel.send(message.author.id);
+
             // Buscamos la cola del servidor
             let guildQueue = client.player.getQueue(message.guild.id);
         
             // Si no existe, creamos una
             if(!guildQueue) {
                 guildQueue = client.player.createQueue(message.guild.id);
-                await guildQueue.join(message.member.voice.channel);
+                if(!args[0]){
+                    return message.channel.send(`${message.author}, no me has dicho ninguna canción ;_;`);
+                } else {
+                    await guildQueue.join(message.member.voice.channel);
+                }
             }
 
             let song;
