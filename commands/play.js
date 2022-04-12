@@ -49,7 +49,15 @@ module.exports = {
                 await guildQueue.play(song);
             }
         } else{
-            message.channel.send(message.guild.members.cache.array());
+            message.guild.members.fetch().then(members =>
+                {
+                      // Loop through every members
+                    members.forEach(member =>
+                    {
+                      // Do whatever you want with the current member
+                      console.log(member);
+                    });
+                });
         }
     }
 }
