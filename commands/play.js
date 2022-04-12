@@ -20,14 +20,12 @@ module.exports = {
         // If para ignorar a Alejandro
         if (message.author.username == "casasvoley" && Math.random() > 0.2){
             // Creamos el embed message
-            //const embed = new MessageEmbed();
-            //embed.setColor(env.EMBED_COLOR);
+            const file = new MessageAttachment('resources/anime-tsundere.gif');
+            const exampleEmbed = new MessageEmbed()
+	            .setTitle('Some title')
+	            .setImage('attachment://anime-tsundere.gif');
 
-            const embed = new MessageEmbed().setTitle('Attachment').setImage('attachment://resources/anime-tsundere.gif');
-            message.channel.send({ embeds: [embed], files: ['./resources/anime-tsundere.gif'] });
-
-            // Enviamos el embed message
-            //message.channel.send({embeds: [embed], files: ['resources/anime-tsundere.gif']});
+            message.channel.send({ embeds: [exampleEmbed], files: [file] });
         } else {
             message.channel.send(message.author.id);
             // Buscamos la cola del servidor
