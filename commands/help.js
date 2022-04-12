@@ -15,7 +15,6 @@ module.exports = {
         // Color, miniatura y autor
         embed.setColor(env.EMBED_COLOR);
         embed.setThumbnail(message.guild.iconURL({ size: 2048, dynamic: true }));
-        embed.setAuthor({iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true })});
         embed.setTimestamp();
         
         //Título y contenido

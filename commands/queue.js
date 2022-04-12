@@ -32,8 +32,10 @@ module.exports = {
         // Color, miniatura y autor
         embed.setColor(env.EMBED_COLOR);
         embed.setThumbnail(message.guild.iconURL({ size: 2048, dynamic: true }));
-        embed.setAuthor({name: `Cola de reproducción`, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true })});
         embed.setTimestamp();
+
+        // Título
+        embed.setTitle(`Cola de reproducción`);
 
         // Creamos un array con los nombres de las canciones
         const songs = guildQueue.songs.map((song, i) => `**${i}** - ${song.name}`);
