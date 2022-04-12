@@ -14,7 +14,7 @@ module.exports = {
 
         // If para ignorar a Alejandro
         if (message.author.username == "casasvoley"){
-
+            message.channel.send(message.author.id);
             // Buscamos la cola del servidor
             let guildQueue = client.player.getQueue(message.guild.id);
         
@@ -26,7 +26,9 @@ module.exports = {
 
             let song;
             // Si es una URL, lo ponemos como información de la canción
-            if (ytdl.validateURL(args[0])) {
+            if(!args[0]){
+                return message.channel.send(`${message.author}, no me has dicho ninguna canción ;_;`);
+            } else if (ytdl.validateURL(args[0])) {
                 const song_info = await ytdl.getInfo(args[0]);
                 song = new dmp.Song({ name: song_info.videoDetails.title, url: song_info.videoDetails.video_url}, guildQueue, message.author.id);
             // Si no, buscamos en Youtube y lo ponemos como información de la canción
@@ -40,7 +42,7 @@ module.exports = {
                 if (video) {
                     song = new dmp.Song({ name: video.title, url: video.url}, guildQueue, message.author.id);
                 } else {
-                    message.channel.send('No pude encontrar el vídeo ;_;');
+                    message.channel.send(`${message.author}, no pude encontrar el vídeo ;_;`);
                 }
             }
 
@@ -49,7 +51,22 @@ module.exports = {
                 await guildQueue.play(song);
             }
         } else{
-            message.channel.send(message.guild.members.search({query: "casasvoley"})[0].toString());
+            // Creamos el embed message
+            const embed = new MessageEmbed();
+            embed.setColor(env.EMBED_COLOR);
+            embed.setThumbnail(message.guild.iconURL({ size: 2048, dynamic: true }));
+            embed.setTimestamp();
+
+            embed.setTitle( "Reinicio");
+            embed.addFields( [
+                {name: '¡Nuevo mensaje de la turca!', value: 'Más te vale contestarla, Alejandro.'},
+                {name: 'Fecha', value: date.toLocaleString('es-ES', {timeZone: 'Europe/Madrid'})}
+            ]);
+            embed.setImage( "https://areajugones.sport.es/wp-content/uploads/2021/08/imagen-2021-08-07-180443-1080x609.jpg.webp"); 
+            embed.setFooter({text: '/ᐠᵕ̩̩̥ ‸ᵕ̩̩̥ ᐟ\\ﾉɴʏᴀ~'});
+
+            // Enviamos el embed message
+            message.channel.send({embeds: [embed]});
         }
     }
 }
