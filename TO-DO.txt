@@ -1,4 +1,4 @@
-comando comedia
+mejorar comando comedia
 
 añadir comandos de música
 
