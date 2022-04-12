@@ -22,8 +22,8 @@ module.exports = {
             // Creamos el embed message
             const embed = new MessageEmbed();
             embed.setColor(env.EMBED_COLOR);
-            
-            embed.setImage( "https://tenor.com/KumO.gif"); 
+
+            embed.setImage( "resources/anime-tsundere.gif"); 
 
             // Enviamos el embed message
             message.channel.send({embeds: [embed]});
