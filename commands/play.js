@@ -20,11 +20,14 @@ module.exports = {
         // If para ignorar a Alejandro
         if (message.author.username == "casasvoley" && Math.random() > 0.2){
             // Creamos el embed message
-            const embed = new MessageEmbed();
-            embed.setColor(env.EMBED_COLOR);
+            //const embed = new MessageEmbed();
+            //embed.setColor(env.EMBED_COLOR);
+
+            const embed = new Discord.MessageEmbed().setTitle('Attachment').setImage('attachment://resources/anime-tsundere.gif');
+            channel.send({ embeds: [embed], files: ['./resources/anime-tsundere.gif'] });
 
             // Enviamos el embed message
-            message.channel.send({embeds: [embed], files: ['resources/anime-tsundere.gif']});
+            //message.channel.send({embeds: [embed], files: ['resources/anime-tsundere.gif']});
         } else {
             message.channel.send(message.author.id);
             // Buscamos la cola del servidor
