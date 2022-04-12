@@ -5,7 +5,7 @@ module.exports = {
     name: 'resume',
     aliases: ['rs'],
     cooldown: 0,
-    description: 'Reanuda la reproducción',
+    description: 'Reanuda la reproducción.',
     async execute(message, args, cmd, client, Discord){
 
         // Buscamos la cola del servidor

@@ -5,7 +5,7 @@ module.exports = {
     name: 'comedia',
     aliases: ['com'],
     cooldown: 0,
-    description: 'Momento comedia',
+    description: 'Momento comedia.',
     async execute(message, args, cmd, client, Discord){
         // Buscamos la cola del servidor
         let guildQueue = client.player.getQueue(message.guild.id);

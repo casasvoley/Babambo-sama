@@ -5,7 +5,7 @@ module.exports = {
     name: 'stop',
     aliases: ['st'],
     cooldown: 0,
-    description: 'Para la canción y limpia la cola',
+    description: 'Para la canción y limpia la cola.',
     async execute(message, args, cmd, client, Discord){
 
         // Buscamos la cola del servidor

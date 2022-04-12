@@ -5,7 +5,7 @@ module.exports = {
     name: 'pause',
     aliases: ['ps'],
     cooldown: 0,
-    description: 'Pausa la reproducción',
+    description: 'Pausa la reproducción.',
     async execute(message, args, cmd, client, Discord){
 
         // Buscamos la cola del servidor

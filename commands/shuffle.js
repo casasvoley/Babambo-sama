@@ -5,7 +5,7 @@ module.exports = {
     name: 'shuffle',
     aliases: ['sh'],
     cooldown: 0,
-    description: 'Mezcla la cola de forma aleatoria',
+    description: 'Mezcla la cola de forma aleatoria.',
     async execute(message, args, cmd, client, Discord){
 
         // Buscamos la cola del servidor

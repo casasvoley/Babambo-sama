@@ -1,5 +1,3 @@
-mejorar comando comedia
-
 añadir comandos de música
 
 añadir iu de música

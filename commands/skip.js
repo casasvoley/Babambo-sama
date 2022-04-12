@@ -5,7 +5,7 @@ module.exports = {
     name: 'skip',
     aliases: ['sk'],
     cooldown: 0,
-    description: 'Salta a la siguiente canción',
+    description: 'Salta a la siguiente canción.',
     async execute(message, args, cmd, client, Discord){
 
         // Buscamos la cola del servidor

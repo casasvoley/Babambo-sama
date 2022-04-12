@@ -10,7 +10,7 @@ const env = JSON.parse(fs.readFileSync('src/env.json'));
 module.exports = {
     name: 'manager',
     aliases: ['fm'],
-    description: "Maneja el contador de horas sin jugar a Football Manager.",
+    description: "Maneja el contador de horas sin jugar a Football Manager.\n %manager reset reinicia el contador.\n %manager counter muestra el contador.",
     async execute(message, args, cmd, client, Discord){
         // Tuple del servidor en la tabla managercounter
         let managerData;

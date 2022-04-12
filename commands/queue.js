@@ -8,7 +8,7 @@ module.exports = {
     name: 'queue',
     aliases: ['q'],
     cooldown: 0,
-    description: 'Muestra la cola de reproducción',
+    description: 'Muestra la cola de reproducción.',
 
     execute(message, args, cmd, client, Discord) {
         let numMostrar = 5; // Número de canciones a mostrar

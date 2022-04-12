@@ -14,7 +14,7 @@ module.exports = {
     name: 'play',
     aliases: ['p'],
     cooldown: 0,
-    description: 'Añade canciones a la cola del bot de música',
+    description: 'Añade canciones a la cola del bot de música.',
     async execute(message, args, cmd, client, Discord){
 
         // If para ignorar a Alejandro

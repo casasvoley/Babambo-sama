@@ -12,7 +12,7 @@ const env = JSON.parse(fs.readFileSync('src/env.json'));
 module.exports = {
     name: 'turca',
     aliases: ['t'],
-    description: "Maneja el contador de horas sin mensajes de la turca.",
+    description: "Maneja el contador de horas sin mensajes de la turca.\n %turca reset reinicia el contador.\n %turca counter muestra el contador.",
     async execute(message, args, cmd, client, Discord){
         // Tuple del servidor en la tabla turcacounter
         let turcaData;
