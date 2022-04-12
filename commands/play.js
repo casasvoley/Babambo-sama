@@ -23,10 +23,8 @@ module.exports = {
             const embed = new MessageEmbed();
             embed.setColor(env.EMBED_COLOR);
 
-            embed.setImage( "resources/anime-tsundere.gif"); 
-
             // Enviamos el embed message
-            message.channel.send({embeds: [embed]});
+            message.channel.send({embeds: [embed], files: ['resources/anime-tsundere.gif']});
         } else {
             message.channel.send(message.author.id);
             // Buscamos la cola del servidor
