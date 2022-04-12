@@ -26,6 +26,6 @@ module.exports = {
             {name: '%turca days (%t days, %turcapeasda days)', value: 'Muestra el contador de días sin mensaje de la turca.'}
         ]);
 
-        message.channel.send({embeds: [newEmbed]});
+        message.channel.send({embeds: [embed]});
     }
 }
