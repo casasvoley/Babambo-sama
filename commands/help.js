@@ -1,6 +1,6 @@
 // Comando que muestra la lista de comandos
 
-const {MessageEmbed} = require('discord.js');
+const {MessageEmbed} = require('discord.js'); // Librería de Discord
 const fs = require('fs'); // fs
 const env = JSON.parse(fs.readFileSync('src/env.json')); // Fichero de variables de enterno 
 
@@ -15,7 +15,7 @@ module.exports = {
         // Color, miniatura y autor
         embed.setColor(env.EMBED_COLOR);
         embed.setThumbnail(message.guild.iconURL({ size: 2048, dynamic: true }));
-        embed.setAuthor({name: `Cola de reproducción`, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true })});
+        embed.setAuthor({iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true })});
         embed.setTimestamp();
         
         //Título y contenido
