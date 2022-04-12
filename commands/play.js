@@ -23,7 +23,7 @@ module.exports = {
             //const embed = new MessageEmbed();
             //embed.setColor(env.EMBED_COLOR);
 
-            const embed = new Discord.MessageEmbed().setTitle('Attachment').setImage('attachment://resources/anime-tsundere.gif');
+            const embed = new MessageEmbed().setTitle('Attachment').setImage('attachment://resources/anime-tsundere.gif');
             channel.send({ embeds: [embed], files: ['./resources/anime-tsundere.gif'] });
 
             // Enviamos el embed message
