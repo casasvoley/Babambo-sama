@@ -1,10 +1,8 @@
-hacer los embed bien
-
 hacer que el bot de música ignore a Alejandro de vez en cuando
 
 añadir soporte de playlist
 
-
+comando comedia
 
 añadir comandos de música
 
