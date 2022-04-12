@@ -33,6 +33,7 @@ module.exports = {
         embed.setColor(env.EMBED_COLOR);
         embed.setThumbnail(message.guild.iconURL({ size: 2048, dynamic: true }));
         embed.setAuthor({name: `Cola de reproducción`, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true })});
+        embed.setTimestamp();
 
         // Creamos un array con los nombres de las canciones
         const songs = guildQueue.songs.map((song, i) => `**${i}** - ${song.name}`);
@@ -45,7 +46,7 @@ module.exports = {
         // Con estos datos, creamos la descripción
         embed.setDescription(`Está sonando ${guildQueue.nowPlaying.name}\n\n${songs.slice(0, numMostrar).join('\n')}\n\n${nextSongs}`);
 
-        embed.setTimestamp();
+        
 
         message.channel.send({ embeds: [embed] });
     },
