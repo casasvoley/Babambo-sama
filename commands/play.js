@@ -66,6 +66,17 @@ module.exports = {
             // Si la canción existe, la reproducimos
             if (song){
                 await guildQueue.play(song);
+                // Creamos el embed message
+                const embed = new MessageEmbed();
+
+                // Color
+                embed.setColor(env.EMBED_COLOR);
+                embed.setTimestamp();
+
+                // Creamos la descripción
+                embed.setDescription(`${song.name} fue añadida a la cola.`);
+
+                message.channel.send({ embeds: [embed] });
             }
         } 
     }
