@@ -1,4 +1,10 @@
+hacer los embed bien
+
 hacer que el bot de música ignore a Alejandro de vez en cuando
+
+añadir soporte de playlist
+
+
 
 añadir comandos de música
 
