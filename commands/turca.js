@@ -33,7 +33,7 @@ module.exports = {
 
         // Comando '%turca reset'
         if (args.at(0).toLowerCase() === 'reset') {
-            const date = new Date();
+            const date = Date.now();
 
             // Actualiza el valor de turcaLastMessage en la tuple
             const response = await turcaModel.findOneAndUpdate(
@@ -56,7 +56,7 @@ module.exports = {
             embed.setTitle( "Reinicio");
             embed.addFields( [
                 {name: '¡Nuevo mensaje de la turca!', value: 'Más te vale contestarla, Alejandro.'},
-                {name: 'Fecha', value: date.toLocaleString('es-ES')}
+                {name: 'Fecha', value: date.toLocaleString('es-ES',{timeZone:'Europe/Madrid'})}
             ]);
             embed.setImage( "https://areajugones.sport.es/wp-content/uploads/2021/08/imagen-2021-08-07-180443-1080x609.jpg.webp"); 
             embed.setFooter({text: '/ᐠᵕ̩̩̥ ‸ᵕ̩̩̥ ᐟ\\ﾉɴʏᴀ~'});
@@ -71,7 +71,7 @@ module.exports = {
 
             // Si el contador ha sido reseteado antes
             if (turcaData.turcaLastMessage.toString() != new Date(0).toString()){
-                diferencia = Math.floor((new Date() - Date.parse(turcaData.turcaLastMessage)) / _MS_PER_DAY);
+                diferencia = Math.floor(( Date.now() - Date.parse(turcaData.turcaLastMessage)) / _MS_PER_DAY);
                 if (diferencia == 1) {
                     message.channel.send("Llevamos " + diferencia + " hora sin mensajes de la turca.");
                 } else if (diferencia < 24){
