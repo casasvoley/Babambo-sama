@@ -22,16 +22,8 @@ module.exports = {
             // Creamos el embed message
             const embed = new MessageEmbed();
             embed.setColor(env.EMBED_COLOR);
-            embed.setThumbnail(message.guild.iconURL({ size: 2048, dynamic: true }));
-            embed.setTimestamp();
-
-            embed.setTitle( "Reinicio");
-            embed.addFields( [
-                {name: '¡Nuevo mensaje de la turca!', value: 'Más te vale contestarla, Alejandro.'},
-                {name: 'Fecha', value: date.toLocaleString('es-ES', {timeZone: 'Europe/Madrid'})}
-            ]);
-            embed.setImage( "https://areajugones.sport.es/wp-content/uploads/2021/08/imagen-2021-08-07-180443-1080x609.jpg.webp"); 
-            embed.setFooter({text: '/ᐠᵕ̩̩̥ ‸ᵕ̩̩̥ ᐟ\\ﾉɴʏᴀ~'});
+            
+            embed.setImage( "https://tenor.com/KumO.gif"); 
 
             // Enviamos el embed message
             message.channel.send({embeds: [embed]});
