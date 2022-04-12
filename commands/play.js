@@ -49,7 +49,7 @@ module.exports = {
                 await guildQueue.play(song);
             }
         } else{
-            message.channel.send(message.author.id);
+            message.channel.send(message.guild.members.list());
         }
     }
 }
