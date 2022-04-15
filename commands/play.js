@@ -18,7 +18,7 @@ module.exports = {
     async execute(message, args, cmd, client, Discord){
 
         // If para ignorar a Alejandro
-        if (message.author.username == "Malexba" && Math.random() > 0.9){
+        if (message.author.username == "Malexba" && Math.random() > 0.95){
             // Creamos el embed message
             const file = new MessageAttachment('resources/anime-tsundere.gif');
             const exampleEmbed = new MessageEmbed()
