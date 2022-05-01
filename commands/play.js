@@ -43,25 +43,30 @@ module.exports = {
 
             let song;
             // Si es una URL, lo ponemos como información de la canción
-            if(!args[0]){
-                return message.channel.send(`${message.author}, no me has dicho ninguna canción ;_;`);
-            } else if (ytdl.validateURL(args[0])) {
-                const song_info = await ytdl.getInfo(args[0]);
-                song = new dmp.Song({ name: song_info.videoDetails.title, url: song_info.videoDetails.video_url}, guildQueue, message.author.id);
-            // Si no, buscamos en Youtube y lo ponemos como información de la canción
-            } else {
-                const video_finder = async (query) => {
-                    const videoResult = await ytSearch(query);
-                    return (videoResult.videos.length > 1) ? videoResult.videos[0] : null;
-                }
-
-                const video = await video_finder(args.join(' '));
-                if (video) {
-                    song = new dmp.Song({ name: video.title, url: video.url}, guildQueue, message.author.id);
+            try {
+                if(!args[0]){
+                    return message.channel.send(`${message.author}, no me has dicho ninguna canción ;_;`);
+                } else if (ytdl.validateURL(args[0])) {
+                    const song_info = await ytdl.getInfo(args[0]);
+                    song = new dmp.Song({ name: song_info.videoDetails.title, url: song_info.videoDetails.video_url}, guildQueue, message.author.id);
+                // Si no, buscamos en Youtube y lo ponemos como información de la canción
                 } else {
-                    message.channel.send(`${message.author}, no pude encontrar el vídeo ;_;`);
+                    const video_finder = async (query) => {
+                        const videoResult = await ytSearch(query);
+                        return (videoResult.videos.length > 1) ? videoResult.videos[0] : null;
+                    }
+    
+                    const video = await video_finder(args.join(' '));
+                    if (video) {
+                        song = new dmp.Song({ name: video.title, url: video.url}, guildQueue, message.author.id);
+                    } else {
+                        message.channel.send(`${message.author}, no pude encontrar el vídeo ;_;`);
+                    }
                 }
+            } catch {
+                message.channel.send(`${message.author}, parece que el enlace está caído o tiene algún problema ;_;`);
             }
+            
 
             // Si la canción existe, la reproducimos
             if (song){
