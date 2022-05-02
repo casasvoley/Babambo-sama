@@ -65,6 +65,7 @@ module.exports = {
                 }
             } catch {
                 message.channel.send(`${message.author}, parece que el enlace está caído o tiene algún problema ;_;`);
+                client.player.getQueue(message.guild.id).stop();
             }
             
 
