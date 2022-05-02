@@ -1,0 +1,4 @@
+heroku login
+git add .
+git commit -m "<mensaje>"
+git push heroku main
