@@ -46,7 +46,6 @@ module.exports = {
             // Si la canción existe, la reproducimos
             if (audio){
                 await guildQueue.play(audio);
-                message.channel.send(`${message.author}, parece que hubo algún problema ;_;`);
             } else {
                 message.channel.send(`${message.author}, parece que hubo algún problema ;_;`);
             }
