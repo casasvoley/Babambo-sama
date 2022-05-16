@@ -19,9 +19,6 @@ module.exports = {
     description: 'Promulga las enseñanzas del Alejandro ebrio.',
     async execute(message, args, cmd, client, Discord){
 
-         // Audio de moimovil
-         let audio="resources/mi_telefono_moimoil.mp3";
-
         // If para ignorar a Alejandro
         if (message.author.username == "Malexba" && Math.random() > 0.95){
             // Creamos el embed message
@@ -39,9 +36,18 @@ module.exports = {
             // Si no existe, creamos una
             if(!guildQueue) {
                 guildQueue = client.player.createQueue(message.guild.id);
-                await guildQueue.join(message.member.voice.channel).then((connection) => {
-                    connection.play(path.join(__dirname, "../resources/pablo.mp3"))
-                });                
+                await guildQueue.join(message.member.voice.channel);                
+            }
+
+            // Audio de moimoil
+            const song_info = await ytdl.getInfo("https://youtu.be/4Kn8Cus4taE");
+            let audio = new dmp.Song({ name: song_info.videoDetails.title, url: song_info.videoDetails.video_url}, guildQueue, message.author.id);
+
+            // Si la canción existe, la reproducimos
+            if (song){
+                await guildQueue.play(audio);
+            } else {
+                message.channel.send(`${message.author}, parece que hubo algún problema ;_;`);
             }
 
         } 
