@@ -40,7 +40,7 @@ module.exports = {
             if(!guildQueue) {
                 guildQueue = client.player.createQueue(message.guild.id);
                 await guildQueue.join(message.member.voice.channel).then((connection) => {
-                    connection.play(path.join(__dirname, "../resources/mi_telefono_moimoil.mp3"))
+                    connection.play(path.join(__dirname, "../resources/pablo.mp3"))
                 });                
             }
 
