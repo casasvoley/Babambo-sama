@@ -10,7 +10,7 @@
   "author": "Álvaro",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.5.3",
+    "@discordjs/opus": "github:discordjs/opus",
     "@discordjs/voice": "^0.8.0",
     "discord": "^0.8.2",
     "discord-api-types": "^0.31.0",

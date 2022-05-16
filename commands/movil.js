@@ -6,6 +6,8 @@ const ytdl = require('ytdl-core');
 const ytSearch = require('yt-search');
 // Librería Discord Music Player
 const dmp = require('discord-music-player');
+// Path
+const path = require('path');
 
 const fs = require('fs'); // fs
 const env = JSON.parse(fs.readFileSync('src/env.json')); // Fichero de variables de enterno 
@@ -37,15 +39,11 @@ module.exports = {
             // Si no existe, creamos una
             if(!guildQueue) {
                 guildQueue = client.player.createQueue(message.guild.id);
-                await guildQueue.join(message.member.voice.channel);                
+                await guildQueue.join(message.member.voice.channel).then((connection) => {
+                    connection.play(path.join(__dirname, "../resources/mi_telefono_moimoil.mp3"))
+                });                
             }
 
-            // Reproducimos el audio
-            if (audio){
-                await guildQueue.play(audio);
-            } else {
-                return message.channel.send(`${message.author}, algo ha ido mal ;_;`);
-            }
         } 
     }
 }
