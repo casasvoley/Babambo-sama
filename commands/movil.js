@@ -40,12 +40,13 @@ module.exports = {
             }
 
             // Audio de moimoil
-            const song_info = await ytdl.getInfo("https://youtu.be/4Kn8Cus4taE");
-            let audio = new dmp.Song({ name: song_info.videoDetails.title, url: song_info.videoDetails.video_url}, guildQueue, message.author.id);
+            const audio_info = await ytdl.getInfo("https://youtu.be/4Kn8Cus4taE");
+            let audio = new dmp.Song({ name: audio_info.videoDetails.title, url: audio_info.videoDetails.video_url}, guildQueue, message.author.id);
 
             // Si la canción existe, la reproducimos
-            if (song){
+            if (audio){
                 await guildQueue.play(audio);
+                message.channel.send(`${message.author}, parece que hubo algún problema ;_;`);
             } else {
                 message.channel.send(`${message.author}, parece que hubo algún problema ;_;`);
             }
