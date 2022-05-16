@@ -13,7 +13,7 @@ const fs = require('fs'); // fs
 const env = JSON.parse(fs.readFileSync('src/env.json')); // Fichero de variables de enterno 
 
 module.exports = {
-    name: 'movil',
+    name: 'moimoil',
     aliases: ['m'],
     cooldown: 0,
     description: 'Promulga las enseñanzas del Alejandro ebrio.',
